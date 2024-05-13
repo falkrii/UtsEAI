@@ -38,13 +38,13 @@ def create_penjaga():
     connection = pika.BlockingConnection(parameters)
     channel = connection.channel()
 
-    channel.queue_declare(queue='PublisherTerima')
-    channel.queue_declare(queue='SubscriberTerima')
+    channel.queue_declare(queue='BerhasilDibuat')
+    channel.queue_declare(queue='BerhasilDiterima')
 
-    channel.basic_publish(exchange='', routing_key='PublisherTerima', body='Data telah dikirim ke Publisher!')
+    channel.basic_publish(exchange='', routing_key='BerhasilDibuat', body='Data telah dikirim ke Publisher!')
     print(" [x] Sent 'Data Telah Ditambahkan ke Publisher!'")    
 
-    channel.basic_publish(exchange='', routing_key='SubscriberTerima', body='Data telah dikirim ke Subscriber!')
+    channel.basic_publish(exchange='', routing_key='BerhasilDiterima', body='Data telah dikirim ke Subscriber!')
     print(" [x] Sent 'Data Telah Ditambahkan ke Subscriber!'")
     connection.close()
 
